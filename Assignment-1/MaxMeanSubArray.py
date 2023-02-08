@@ -1,6 +1,6 @@
 # Uses the technique two-pointer and specifically the fixed size sliding window
 # Time complexity O(kn) where n is the length of the array and k is the input k
-# Space complexity is O(n) due to the input array
+# Space complexity is O(1) as the extra space used is constant
 # Took 15 minutes and 40 seconds
 
 def max_mean_sub(lst: list, k: int) -> float:
