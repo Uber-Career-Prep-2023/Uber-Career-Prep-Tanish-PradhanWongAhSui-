@@ -4,6 +4,7 @@
 # no confusing edge cases. straightforward question, not vague
 # what if it begins with a #?
 # assuming neither string begins with a #
+# took about 10 minutes
 def back_space_compare(s1: str, s2: str) -> bool:
     # method 1
     a1 = []

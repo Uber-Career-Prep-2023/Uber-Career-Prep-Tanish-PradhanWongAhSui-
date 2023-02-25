@@ -3,6 +3,7 @@
 # approach used is many fixed size sliding windows with the two pointer technique
 # time complexity - O(n*1 + (n-1)*2 + (n-2)*3 + (n-3)*4 ...) = arithmetic series -> O(n^2)
 # space complexity - O(1) no additional array used, only variables count and total
+# took about 15 minutes
 def zero_sum_count(lst: list)-> int:
     #     at first thought, an approach that checks every single possible subarray seems difficult to achieve
 # naive approach
