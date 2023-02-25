@@ -1,5 +1,6 @@
 # Uses the technique two-pointer and specifically the fixed size sliding window
 # Time complexity O(kn) where n is the length of the array and k is the input k
+# ! CAN BE OPTIMIZED TO O(n) !
 # Space complexity is O(1) as the extra space used is constant
 # Took 15 minutes and 40 seconds
 
