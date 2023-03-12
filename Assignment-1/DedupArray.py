@@ -5,18 +5,12 @@
 def dedup_array(lst: list)-> list:
     if not lst:
         return []
-    new = [lst[0]]
-    i = 1
-    while i < len(lst):
-        prev = new[-1]
-        if prev != lst[i]:
-            new.append(lst[i])
-        i += 1
-    return new
-
-        
-    # set1 = set(lst)
-    # return list(set1)
+    j = 0
+    for i in range(1, len(lst)):
+        if lst[i] != lst[j]:
+            j += 1
+            lst[j] = lst[i]
+    return lst[:j+1]
 
 
 print(dedup_array([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
