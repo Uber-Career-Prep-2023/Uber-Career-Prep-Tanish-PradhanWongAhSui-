@@ -1,6 +1,7 @@
 # time complexity O(n)
 # space complexity O(n)
-
+# Took 15 minutes
+# Uses hashing technique
 def two_sum(lst: list, k: int)-> int:
     d = {}
     count = 0

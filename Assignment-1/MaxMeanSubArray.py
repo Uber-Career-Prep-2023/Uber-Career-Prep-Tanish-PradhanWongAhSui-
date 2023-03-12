@@ -24,3 +24,5 @@ print(max_mean_sub([4, 5, -3, 2, 6, 1], 2))  # should print 4.5
 print(max_mean_sub([4, 5, -3, 2, 6, 1], 3))  # should print 3
 print(max_mean_sub([1, 1, 1, 1, -1, -1, 2, -1, -1], 3))  # should print 1
 print(max_mean_sub([1, 1, 1, 1, -1, -1, 2, -1, -1, 6], 5))  # should print 1
+print(max_mean_sub([], 12)) #should return 0
+print(max_mean_sub([1,12], 0)) # should return 0

@@ -12,7 +12,8 @@ def zero_sum_count(lst: list)-> int:
     for i in range(1, len(lst)):
         if i > 1:
             total = sum(lst[:i])
-        else: total = lst[0]
+        else:
+            total = lst[0]
         for j in range(i, len(lst)):
             if total == 0:
                 count += 1
@@ -20,6 +21,8 @@ def zero_sum_count(lst: list)-> int:
             total += lst[i]
         if total == 0:
             count += 1
+    if len(lst) > 0 and lst[0] == 0:
+        count += 1
     return count
 
 
@@ -29,3 +32,11 @@ print(zero_sum_count([1, 8, 7, 3, 11, 9]))
 # expected - 0
 print(zero_sum_count([8, -5, 0, -2, 3, -4]))
 # expected - 2 (if the output in the homework description is inaccurate)
+print(zero_sum_count([]))
+# 0
+print(zero_sum_count([0, 0]))
+# 3
+print(zero_sum_count([0]))
+# 1
+print(zero_sum_count([0, 0, 0, 0]))
+# 10

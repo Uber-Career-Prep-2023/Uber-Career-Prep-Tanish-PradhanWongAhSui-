@@ -2,6 +2,8 @@
 # space complexity O(n)
 # hashing technique Hash the elements
 # took 8 minutes
+# NOTE: It seems like the very nature of the question relies on a very specific input for an accurate
+# result to be determined. Hence, the solution below assumes correct input and no edge cases.
 def missing_int(n: int, lst : list) -> int:
     my_set = set(lst)
     for i in range(1, n+1):
