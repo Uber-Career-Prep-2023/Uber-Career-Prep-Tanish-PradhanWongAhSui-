@@ -1,7 +1,7 @@
 # this method uses the hashset technique
 # time complexity O(n)
 # space complexity O(n)
-# took 10 minutes
+# took 12 minutes
 def dedup_array(lst: list)-> list:
     if not lst:
         return []
@@ -21,3 +21,4 @@ print(dedup_array([1, 3, 4, 8, 10, 12]))
 # [1, 3, 4, 8, 10, 12]
 print(dedup_array([]))
 # []
+print(dedup_array([0, 0, 0, 0]))

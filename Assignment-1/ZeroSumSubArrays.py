@@ -40,3 +40,4 @@ print(zero_sum_count([0]))
 # 1
 print(zero_sum_count([0, 0, 0, 0]))
 # 10
+print(zero_sum_count([]))

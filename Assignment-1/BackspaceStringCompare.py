@@ -40,3 +40,5 @@ print(back_space_compare("abcdef###xyz", "abcw#xyz"))
 # True
 print(back_space_compare("abcdef###xyz", "abcdefxyz###"))
 # False
+print(back_space_compare("", ""))
+# True

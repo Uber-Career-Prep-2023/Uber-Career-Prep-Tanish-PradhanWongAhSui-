@@ -8,6 +8,8 @@ import math
 def shortest_substring(s1: str, s2: str) -> int:
     if len(s2) > len(s1):
         return 0
+    if len(s2) == 0 or len(s1) == 0:
+        return 0
     p1 = 0
     p2 = 0
     counter = Counter(s2)
@@ -56,3 +58,5 @@ print(shortest_substring("goddess", "gs"))
 # 6
 print(shortest_substring("goddess", "ss"))
 # 2
+print(shortest_substring("", ""))
+# 0
