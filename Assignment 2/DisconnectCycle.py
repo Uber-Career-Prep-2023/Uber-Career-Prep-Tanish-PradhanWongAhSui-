@@ -1,6 +1,6 @@
 # Uses the hash linked list nodes technique
 # Time complexity - O(n)
-# Space complexity - O(1)
+# Space complexity - O(n)
 from SinglyLinkedList import Node
 
 def disconnect_cycle(head: Node) -> Node:
@@ -53,5 +53,49 @@ cycle_node4.next.next.next = Node(4)
 cycle_node4.next.next.next.next = cycle_node4
 # cycle_node4.print()
 disconnect_cycle(cycle_node4).print()
+
+# Test Case 1
+# Empty linked list
+test_node1 = None
+disconnect_cycle(test_node1)
+
+# Test Case 2
+# Linked list with no cycle
+test_node2 = Node(1)
+test_node2.insertAtBack(2)
+test_node2.insertAtBack(3)
+test_node2.insertAtBack(4)
+test_node2.insertAtBack(5)
+disconnect_cycle(test_node2).print()
+
+# Test Case 3
+# Linked list with a cycle
+test_node3 = Node(1)
+test_node3.insertAtBack(2)
+test_node3.insertAtBack(3)
+test_node3.insertAtBack(4)
+test_node3.insertAtBack(5)
+test_node3.next.next.next.next.next = test_node3.next.next
+disconnect_cycle(test_node3).print()
+
+# Test Case 4
+# Linked list with negative node
+test_node4 = Node(-1)
+test_node4.insertAtBack(-2)
+test_node4.insertAtBack(-3)
+test_node4.insertAtBack(-4)
+test_node4.insertAtBack(-5)
+test_node4.next.next.next.next.next = test_node4.next.next
+disconnect_cycle(test_node4).print()
+
+# Test Case 5
+# Linked list with None node
+test_node5 = Node(None)
+test_node5.insertAtBack(None)
+test_node5.insertAtBack(None)
+test_node5.insertAtBack(None)
+test_node5.insertAtBack(None)
+test_node5.next.next.next.next.next = test_node5.next.next
+disconnect_cycle(test_node5).print()
 
 # Took 21 minutes

@@ -92,8 +92,6 @@ class Node:
 
     def reverseIterative(self) -> Node:
         # O(n)
-        # does not work if only two elements
-        # works now but still test
         prev = None
         curr = self
         while curr:
@@ -104,8 +102,6 @@ class Node:
         return prev
 
     def reverseRecursive(self) -> Node:
-        # does not work if only two elements
-        # same also works now but still test
         # O(n)
         curr = self
         def reverseR(prev, curr1: Node) -> Node:
@@ -116,9 +112,5 @@ class Node:
             return reverseR(curr1, temp)
         return reverseR(None, curr)
 
-# node = Node(10)
-# node.insertAtBack(122)
-# node.print()
-# node.reverseRecursive().print()
 
 

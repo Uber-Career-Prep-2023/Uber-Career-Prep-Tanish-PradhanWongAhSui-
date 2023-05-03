@@ -51,7 +51,7 @@ class Node:
 
     def insertAfter(self, val: int, loc: Node):
         # O(n)
-        if not (self and loc): # this should work right?
+        if not (self and loc): 
             return
         curr = self
         while curr.val != loc.val:
@@ -65,7 +65,6 @@ class Node:
         new_node.next = temp
         if temp:
             temp.prev = new_node
-        # test this
 
     def deleteFront(self) -> Node:
         # O(1)
@@ -138,14 +137,6 @@ class Node:
             return reverseR(curr1, temp)
         return reverseR(self, curr)
 
-# my_node = Node(5)
-# new = my_node.insertAtFront(10)
-# new.insertAtBack(15)
-# new.insertAfter(12, Node(5))
-# new.print()
-# reversed1 = new.reverseRecursive()
-# reversed1.print()
-# reversed1.print_rev()
 
 
 

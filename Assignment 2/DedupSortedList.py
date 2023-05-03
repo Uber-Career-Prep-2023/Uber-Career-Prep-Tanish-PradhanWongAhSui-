@@ -2,33 +2,11 @@
 # Time complexity - O(n)
 # Space complexity - O(1)
 
-class Node:
-    pass
-class Node:
-    def __init__(self, val: int = None):
-        self.val = val
-        self.next = None
-    def print(self):
-        curr = self
-        string = ""
-        while curr:
-            string += str(curr.val) + " -> "
-            curr = curr.next
-        string += "None"
-        print(string)
-    def insertAtBack(self, val: int):
-        new = Node(val)
-        if not self:
-            self = new
-            return 
-        curr = self
-        while curr.next:
-            curr = curr.next
-        curr.next = new
+from SinglyLinkedList import Node
 
 def dedupSort(head: Node):
     if not head:
-        return 
+        return None
     p1 = head
     p2 = head.next
     while p2:
@@ -38,6 +16,13 @@ def dedupSort(head: Node):
         p2 = p2.next
     p1.next = None
     return head
+
+test_node10 = Node(None)
+test_node10.print()
+print(dedupSort(test_node10))
+
+print(dedupSort(None))
+
 
 test_node1 = Node(1)
 test_node1.insertAtBack(2)
@@ -63,6 +48,9 @@ dedupSort(test_node2).print()
 print(dedupSort(None))
 
 test_node3 = Node(-10000)
+test_node3.next = Node(-999)
+test_node3.next.next = Node(-999)
+test_node3.next.next.next = Node(123123)
 test_node3.print()
 dedupSort(test_node3).print()
 

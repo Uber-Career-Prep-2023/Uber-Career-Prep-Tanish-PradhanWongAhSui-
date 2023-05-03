@@ -5,6 +5,9 @@ class TreeNode:
         self.left = None
         self.right = None
 
+    def __str__(self):
+        return str(self.val)
+
 class BinarySearchTree:
     def __init__(self):
         # O(1)
@@ -47,7 +50,7 @@ class BinarySearchTree:
         if not self.root:
             self.root = new_node
             return
-        curr = self
+        curr = self.root
         while True:
             if curr.val == val:
                 return
@@ -63,36 +66,25 @@ class BinarySearchTree:
                 curr = curr.left
 
     def delete(self, val):
-        # first search for node
-        curr = self.root
-        while curr:
-            if curr.val == val:
-                break
-            if curr.left:
-                if curr.left.val == val and not curr.:
-
-            elif curr.left > val:
-                curr = curr.left
-            else:
-                curr = curr.right
-        if not curr:
+        # Time and space complexity both O(h)
+        if not self:
             return None
-        if curr.le
-
-        # case1 - node to delete has no left or right
-        #   simply delete node
-        # case2 - node to delete has one left or right
-        #   shift up the left or right
-        # case3 - node to delete has both left and right
-        #   find next biggest element, replace node to delete's value with that and then delete that next biggest element
-
-
-#    3
-#  /  \ 
-# 2    5
-# 
-
-
+        
+        if self.val == val:
+            if not self.right: return self.left
+            elif not self.left: return self.right
+            
+            curr = self.right
+            while curr.left:
+                curr = curr.left
+            self.val = curr.val
+            self.right = self.delete(self.right, val)
+        
+        elif val > self.val:
+            self.right = self.delete(self.right, val)
+        else:
+            self.left = self.delete(self.left, val)
+        return self
 
 
 
