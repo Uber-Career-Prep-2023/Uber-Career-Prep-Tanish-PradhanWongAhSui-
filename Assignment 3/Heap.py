@@ -28,6 +28,7 @@ class Heap:
         while True:
             left_child = 2 * index + 1
             right_child = 2 * index + 2
+            smallest = index
             if left_child < size and self.arr[left_child] < self.arr[index]:
                 smallest = left_child
             if right_child < size and self.arr[right_child] < self.arr[index]:
