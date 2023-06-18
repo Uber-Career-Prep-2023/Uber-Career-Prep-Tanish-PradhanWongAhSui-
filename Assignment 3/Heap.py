@@ -25,39 +25,16 @@ class Heap:
         self.arr[0] = self.arr.pop()
         index = 0
         size = len(self.arr)
+        smallest = 0
         while True:
+            smallest = index
             left_child = 2 * index + 1
             right_child = 2 * index + 2
-            smallest = index
-            if left_child < size and self.arr[left_child] < self.arr[index]:
+            if left_child < size and self.arr[left_child] < self.arr[smallest]:
                 smallest = left_child
-            if right_child < size and self.arr[right_child] < self.arr[index]:
+            if right_child < size and self.arr[right_child] < self.arr[smallest]:
                 smallest = right_child
             if smallest == index:
                 break
             self.arr[smallest], self.arr[index] = self.arr[index], self.arr[smallest]
             index = smallest
-
-heap = Heap()
-heap.insert(3)
-heap.insert(5)
-heap.insert(3)
-heap.insert(9)
-heap.insert(2)
-heap.insert(0)
-heap.insert(-1)
-heap.insert(1221)
-heap.insert(11)
-print(heap.arr)
-heap.remove()
-print(heap.arr)
-heap.remove()
-print(heap.arr)
-heap.remove()
-print(heap.arr)
-heap.remove()
-print(heap.arr)
-heap.remove()
-print(heap.arr)
-heap.remove()
-print(heap.arr)

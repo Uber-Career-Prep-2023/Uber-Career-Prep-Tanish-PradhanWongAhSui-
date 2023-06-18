@@ -1,17 +1,16 @@
+# Generic traversal
+# Time complexity- O(V+E)
+# Space complexity - O(V+E)
+
 def RoadNetworks(towns: list[str], roads: list) -> int:
     # convert to adjcency list graph
 
     # loop through with dfs and everytime 
     # it starts a new iteration and it hasn't been visited
     # increment count by 1
-    
-    # Time - O(V+E)
-    # Space - O(V+E)
 
     count = 0
-    visited = {}
-    for town in towns:
-        visited[town] = False
+    visited = set()
 
     graph = {}
     for town1, town2 in roads:
@@ -23,13 +22,13 @@ def RoadNetworks(towns: list[str], roads: list) -> int:
         graph[town2].add(town1)
 
     def dfs(vertex: str):
-        visited[vertex] = True
+        visited.add(vertex)
         for neighbor in graph.get(vertex):
-            if not visited[neighbor]:
+            if neighbor not in visited:
                 dfs(neighbor)
 
-    for town in graph:
-        if not visited[town] and len(graph.get(town, set())) != 0:
+    for town in towns:
+        if town not in visited and len(graph.get(town, set())) != 0:
             count += 1
             dfs(town)
     
@@ -40,5 +39,11 @@ assert 3 == RoadNetworks(["Kona", "Hilo", "Volcano", "Lahaina", "Hana", "Haiku",
 assert 2 == RoadNetworks(["Anchorage", "Skagway", "Juneau", "Gustavus", "Homer", "Port Alsworth", "Glacier Bay", "Fairbanks", "McCarthy", "Copper Center", "Healy"], [("Anchorage", "Homer"), ("Glacier Bay", "Gustavus"), ("Copper Center", "McCarthy"), ("Anchorage", "Copper Center"), ("Copper Center", "Fairbanks"), ("Healy", "Fairbanks"), ("Healy", "Anchorage")])
 assert 0 == RoadNetworks([], [])
 assert 0 == RoadNetworks(["Gangtok", "Siliguri", "Delhi", "Mumbai"], [])
+assert 2 == RoadNetworks(["Gangtok", "Siliguri", "Delhi", "Mumbai", "Anchorage", "Skagway", "Juneau", "Gustavus", "Homer", "Port Alsworth", "Glacier Bay", "Fairbanks", "McCarthy", "Copper Center", "Healy"], [("Anchorage", "Homer"), ("Glacier Bay", "Gustavus"), ("Copper Center", "McCarthy"), ("Anchorage", "Copper Center"), ("Copper Center", "Fairbanks"), ("Healy", "Fairbanks"), ("Healy", "Anchorage")])
+assert 0 == RoadNetworks([], [("A", "B"), ("C", "D")])
+assert 0 == RoadNetworks(["A", "B", "C"], [])
+assert 1 == RoadNetworks(["A", "B", "C"], [("A", "B"), ("B", "C"), ("A", "B"), ("B", "C")])
+assert 1 == RoadNetworks(["A", "B", "C"], [("A", "B"), ("B", "C"), ("C", "C")])
 
-# took 25 minutes
+
+# took 32 minutes

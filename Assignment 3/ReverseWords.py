@@ -1,6 +1,8 @@
+# Uses a stack 
+# Time complexity - O(n)
+# Space complexity - O(n)
+
 def reversewords(line: str)-> str:
-    # Time - O(n), space - O(n)
-    
     words = line.split()  
     stack = []
     
@@ -17,5 +19,11 @@ assert reversewords("Uber Career Prep") == "Prep Career Uber"
 assert reversewords("Emma lives in Brooklyn, New York.") == "York. New Brooklyn, in lives Emma"
 assert reversewords("") == ""
 assert reversewords("hellothere") == "hellothere"
+assert reversewords("Hello World") == "World Hello"
+assert reversewords("   Hello   ") == "Hello"
+assert reversewords("Hello    World") == "World Hello"
+assert reversewords("Hello") == "Hello"
+assert reversewords("!@#$%^&*()") == "!@#$%^&*()"
+assert reversewords("123 456 789") == "789 456 123"
 
-# took 10 minutes
+# took 16 minutes

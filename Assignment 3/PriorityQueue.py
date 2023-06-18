@@ -1,4 +1,4 @@
-class Heap:
+class PriorityQueue:
     def __init__(self):
         self.arr = []
 
@@ -25,14 +25,16 @@ class Heap:
         self.arr[0] = self.arr.pop()
         index = 0
         size = len(self.arr)
+        largest = 0
         while True:
+            largest = index
             left_child = 2 * index + 1
             right_child = 2 * index + 2
-            if left_child < size and self.arr[left_child][1] > self.arr[index][1]:
-                smallest = left_child
-            if right_child < size and self.arr[right_child][1] > self.arr[index][1]:
-                smallest = right_child
-            if smallest == index:
+            if left_child < size and self.arr[left_child] > self.arr[largest]:
+                largest = left_child
+            if right_child < size and self.arr[right_child] > self.arr[largest]:
+                largest = right_child
+            if largest == index:
                 break
-            self.arr[smallest], self.arr[index] = self.arr[index], self.arr[smallest]
-            index = smallest
+            self.arr[largest], self.arr[index] = self.arr[index], self.arr[largest]
+            index = largest

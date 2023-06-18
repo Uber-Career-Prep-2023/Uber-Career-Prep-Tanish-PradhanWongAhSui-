@@ -12,11 +12,6 @@ def adjacencySet(edges: list)-> dict:
         res[u].add(v)
     return res
 
-x = [(1, 2), (2, 3), (1, 3), (3, 2), (2, 0)]
-y = adjacencySet(x)
-for i in y:
-    print(i, y[i])
-
 from collections import deque
 
 def bfs(target: int, graph: dict) -> bool:
@@ -25,7 +20,7 @@ def bfs(target: int, graph: dict) -> bool:
     visited = [False] * len(graph)
     queue = deque()
 
-    source = 0 # Assuming source of vertex is 0
+    source = 0 # Assuming source of vertex is 0 and assuming the graph is connected
     queue.append(source)
 
     while queue:
@@ -55,7 +50,7 @@ def dfs(target: int, graph: dict) -> bool:
                     return True
         return False
     
-    return recursive_dfs(0) # Assuming source of vertex is 0 and assuming the graph is undirected and connected
+    return recursive_dfs(0) # Assuming source of vertex is 0 and assuming the graph is connected
 
 def topologicalSortDFS(graph: dict) -> list:
     # Time - O(V+E)

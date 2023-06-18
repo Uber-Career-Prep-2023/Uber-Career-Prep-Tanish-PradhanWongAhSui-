@@ -1,8 +1,9 @@
 from collections import deque
+# bfs traversal is used
+# time complexity - O(V+E)
+# space complexity - O(V+E)
 
 def numdestinations(flights: list, origin: str, k: float) -> list:
-    # time - O(V+E)
-    # space - O(V+ E)
     destinations = set()
     graph = {}
     for place1, place2, time in flights:
@@ -35,5 +36,8 @@ assert 0 == numdestinations([("Boston", "New York", 4), ("New York", "Philadelph
 assert 0 == numdestinations([], "", 10000)
 assert 0 == numdestinations([], "", -100)
 assert 0 == numdestinations([("Boston", "New York", 4), ("New York", "Philadelphia", 2), ("Boston", "Newport", 1.5), ("Washington, D.C.", "Harper's Ferry", 1), ("Boston", "Portland", 2.5), ("Philadelphia", "Washington, D.C.", 2.5)], "New York", -200000)
+assert 1 == numdestinations([("Boston", "New York", 4), ("New York", "Philadelphia", 2), ("Boston", "Newport", 1.5), ("Washington, D.C.", "Harper's Ferry", 1), ("Boston", "Portland", 2.5), ("Philadelphia", "Washington, D.C.", 2.5)], "New York", 3)
+assert 3 == numdestinations([("Boston", "New York", 4), ("New York", "Philadelphia", 2), ("Boston", "Newport", 1.5), ("Washington, D.C.", "Harper's Ferry", 1), ("Boston", "Portland", 2.5), ("Philadelphia", "Washington, D.C.", 2.5)], "Boston", 4)
+assert 2 == numdestinations([("Boston", "New York", 4), ("New York", "Philadelphia", 2), ("Boston", "Newport", 1.5), ("Washington, D.C.", "Harper's Ferry", 1), ("Boston", "Portland", 2.5), ("Philadelphia", "Washington, D.C.", 2.5)], "Boston", 3)
 
 # took 30 minutes

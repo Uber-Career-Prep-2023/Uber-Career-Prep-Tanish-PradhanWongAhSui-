@@ -1,8 +1,10 @@
+# Generic traversal as all elemnts in the matrix will have to be traversed through
+# time complexity - O(m*n)
+# space complexity- O(m*n)
+
 from collections import deque
 
 def numIslands(matrix: list[list[int]])-> int:
-    # bfs approach
-    # time - O(m*n), space - O(m*n)
     count = 0
     for row in range(len(matrix)):
         for col in range(len(matrix[row])):
@@ -55,6 +57,16 @@ matrix10 = [[0, 0, 0],
            [0, 1, 0],
            [0, 0, 1]]
 
+matrix11 = [[1, 1, 1, 0, 1, 1, 1, 0, 1]]
+
+matrix12 = [[0],
+            [1],
+            [0],
+            [1]
+            ]
+
+assert numIslands(matrix12) == 2
+assert numIslands(matrix11) == 3
 assert numIslands(matrix9) == 1
 assert numIslands(matrix10) == 2
 assert numIslands(matrix4) == 0
@@ -66,4 +78,4 @@ assert numIslands(matrix3) == 13
 assert numIslands(matrix1) == 3
 assert numIslands(matrix2) == 1
 
-# took 25 minutes
+# took 35 minutes 

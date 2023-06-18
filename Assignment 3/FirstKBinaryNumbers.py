@@ -1,6 +1,11 @@
+# Uses a queue
+# time complexity - O(k)
+# space complexity - O(k)
+
 from collections import deque
 
 def firstkbnums(k: int)-> list[str]:
+
     # time - O(k), space - O(k)
     if k < 1:
         return []
@@ -24,4 +29,4 @@ assert firstkbnums(2) == ["0", "1"]
 assert firstkbnums(0) == []
 assert firstkbnums(-1) == []
 
-# took 35 minutes to come up with this solution
+# took 28 minutes 
