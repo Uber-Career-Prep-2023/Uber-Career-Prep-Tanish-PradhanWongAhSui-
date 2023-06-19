@@ -17,40 +17,42 @@ from collections import deque
 def bfs(target: int, graph: dict) -> bool:
     # Time - O(V+E)
     # Space - O(V)
-    visited = [False] * len(graph)
-    queue = deque()
 
-    source = 0 # Assuming source of vertex is 0 and assuming the graph is connected
-    queue.append(source)
-
-    while queue:
-        vertex = queue.popleft()
-        visited[vertex] = True
-        if vertex == target:
-            return True
-        for neighbor in graph.get(vertex, set()):
-            if not visited[neighbor]:
-                queue.append(neighbor)
+    visited = set()
+    for vertex in graph:
+        if vertex in visited:
+            continue
+        queue = deque([vertex])
+        while queue:
+            curr = queue.popleft()
+            if curr == target:
+                return True
+            visited.add(curr)
+            for neighbor in graph.get(curr, set()):
+                if neighbor not in visited:
+                    queue.append(neighbor)
     return False
 
-            
 def dfs(target: int, graph: dict) -> bool:
     # Time - O(V+E)
     # Space - O(V)
-    visited = [False] * len(graph)
 
-    def recursive_dfs(vertex: int) -> bool:
-        visited[vertex] = True
+    visited = set()
+    def dfs(vertex: int) -> bool:
+        visited.add(vertex)
         if vertex == target:
             return True
-        
-        for neighbor in graph.get(vertex, set()):
-            if not visited[neighbor]:
-                if dfs(neighbor):
-                    return True
+        for next in graph.get(vertex, set()):
+            if next not in visited:
+                return dfs(next)
         return False
-    
-    return recursive_dfs(0) # Assuming source of vertex is 0 and assuming the graph is connected
+
+    for vertex in graph:
+        if vertex in visited:
+            continue
+        if dfs(vertex):
+            return True
+    return False
 
 def topologicalSortDFS(graph: dict) -> list:
     # Time - O(V+E)
