@@ -41,8 +41,25 @@ assert ['Intro to Programming',
  
  ] == precourses(["Intro to Programming", "Data Structures", "Advanced Algorithms", "Operating Systems", "Databases"], { "Data Structures": ["Intro to Programming"], "Advanced Algorithms": ["Data Structures"], "Operating Systems": ["Advanced Algorithms"], "Databases": ["Advanced Algorithms"] })
 
+assert precourses(["Course10", "Course0"], {"Course10": ["Course0"]}) == ["Course0", "Course10"]
 assert precourses([], {}) == []
+assert precourses(["Course1"], {}) == ["Course1"]
+assert precourses(
+    ["Course1", "Course2", "Course3"],
+    {"Course1": ["Course2"], "Course2": ["Course3"], "Course3": ["Course1"]},
+) == []
+assert precourses(
+    ["Course1", "Course2", "Course3"],
+    {"Course2": ["Course1"], "Course3": ["Course1", "Course2"]},
+) == ["Course1", "Course2", "Course3"]
+assert precourses(
+    ["Course1", "Course2", "Course3"],
+    {"Course2": ["Course1"], "Course3": ["Course2", "Course1"]},
+) == ["Course1", "Course2", "Course3"]
+assert precourses(
+    ["Course1", "Course2", "Course3"],
+    {"Course2": ["Course1"], "Course3": ["Course1"], "Course2": ["Course3"]},
+) == ["Course1", "Course3", "Course2"]
 
-assert precourses(["Course10", "Course0"], {"Course10" : ["Course0"]}) == ["Course0", "Course10"]
 
-# took 25 minutes
+# took 32 minutes

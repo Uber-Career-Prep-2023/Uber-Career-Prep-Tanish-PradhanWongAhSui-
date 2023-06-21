@@ -38,28 +38,52 @@ C = "C"
 D = "D"
 E = "E"
 
-assert alternatingpath([(A, B, "blue"), (A, C, "red"), (B, D, "blue"), 
-(B, E, "blue"), (C, B, "red"), (D, C, "blue"), (A, D, "red"), 
-(D, E, "red"), (E, C, "red")], A, E) == 4
+assert alternatingpath(
+    [("A", "B", "blue"), ("A", "C", "red"), ("B", "D", "blue"), ("B", "E", "blue"), ("C", "B", "red"),
+     ("D", "C", "blue"), ("A", "D", "red"), ("D", "E", "red"), ("E", "C", "red")],
+    "A", "E"
+) == 4
 
-assert alternatingpath([(A, B, "blue"), (A, C, "red"), (B, D, "blue"), 
-(B, E, "blue"), (C, B, "red"), (D, C, "blue"), (A, D, "red"), 
-(D, E, "red"), (E, C, "red")], E, D) == -1
+assert alternatingpath(
+    [("A", "B", "blue"), ("A", "C", "red"), ("B", "D", "blue"), ("B", "E", "blue"), ("C", "B", "red"),
+     ("D", "C", "blue"), ("A", "D", "red"), ("D", "E", "red"), ("E", "C", "red")],
+    "E", "D"
+) == -1
 
-assert alternatingpath([(A, B, "blue"), (A, C, "red"), (B, D, "blue"), 
-(B, E, "blue"), (C, B, "red"), (D, C, "blue"), (A, D, "red"), 
-(D, E, "red"), (E, C, "red")], C, E) == 2
+assert alternatingpath(
+    [("A", "B", "blue"), ("A", "C", "red"), ("B", "D", "blue"), ("B", "E", "blue"), ("C", "B", "red"),
+     ("D", "C", "blue"), ("A", "D", "red"), ("D", "E", "red"), ("E", "C", "red")],
+    "C", "E"
+) == 2
 
-assert alternatingpath([(A, B, "blue"), (A, C, "red"), (B, D, "blue"), 
-(B, E, "blue"), (C, B, "red"), (D, C, "blue"), (A, D, "red"), 
-(D, E, "red"), (E, C, "red")], E, B) == -1
+assert alternatingpath(
+    [("A", "B", "blue"), ("A", "C", "red"), ("B", "D", "blue"), ("B", "E", "blue"), ("C", "B", "red"),
+     ("D", "C", "blue"), ("A", "D", "red"), ("D", "E", "red"), ("E", "C", "red")],
+    "E", "B"
+) == -1
 
-assert alternatingpath([], A, E) == -1
-assert alternatingpath([(A, A, "blue")], A, A) == 0
-assert alternatingpath([(A, B, "blue"), (B, C, "red"), (C, D, "blue")], A, E) == -1
-assert alternatingpath([(A, B, "blue")], A, B) == 1
-assert alternatingpath([(A, B, "blue"), (B, C, "red"), (C, D, "blue"), (D, E, "red")], A, E) == 4
-assert alternatingpath([(A, B, "blue"), (B, C, "blue"), (C, D, "blue"), (D, E, "red")], A, E) == -1
-assert alternatingpath([(A, B, "blue"), (B, C, "red"), (C, D, "blue"), (D, E, "red")], E, A) == -1
+assert alternatingpath([], "A", "E") == -1
 
-# took 34 minutes so far
+assert alternatingpath([("A", "A", "blue")], "A", "A") == 0
+
+assert alternatingpath([("A", "B", "blue"), ("B", "C", "red"), ("C", "D", "blue")], "A", "E") == -1
+
+assert alternatingpath([("A", "B", "blue")], "A", "B") == 1
+
+assert alternatingpath(
+    [("A", "B", "blue"), ("B", "C", "red"), ("C", "D", "blue"), ("D", "E", "red")],
+    "A", "E"
+) == 4
+
+assert alternatingpath(
+    [("A", "B", "blue"), ("B", "C", "blue"), ("C", "D", "blue"), ("D", "E", "red")],
+    "A", "E"
+) == -1
+
+assert alternatingpath(
+    [("A", "B", "blue"), ("B", "C", "red"), ("C", "D", "blue"), ("D", "E", "red")],
+    "E", "A"
+) == -1
+
+
+# took 34 minutes
