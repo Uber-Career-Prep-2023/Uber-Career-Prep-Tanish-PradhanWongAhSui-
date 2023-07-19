@@ -55,21 +55,22 @@ def dfs(target: int, graph: dict) -> bool:
     return False
 
 def topologicalSortDFS(graph: dict) -> list:
-    # Time - O(V+E)
-    # Space - O(V)
     stack = []
-    visited = [False] * len(graph)
+    visited = set()
     
     def recursiveTSDFS(vertex: int):
-        visited[vertex] = True
+        visited.add(vertex)
         for neighbor in graph.get(vertex, set()):
-            if not visited[neighbor]:
+            if neighbor not in visited:
                 recursiveTSDFS(neighbor)
         stack.append(vertex)
 
     for vertex in graph:
-        recursiveTSDFS(vertex)
+        if vertex not in visited:
+            recursiveTSDFS(vertex)
+            
     return stack[::-1]
+
 
 
 def topologicalSortKahn(graph: dict) -> list:
@@ -97,3 +98,18 @@ def topologicalSortKahn(graph: dict) -> list:
                 res.append(neighbor)
     return res
 
+assert adjacencySet([(0, 1), (1, 2), (2, 3)]) == {0: {1}, 1: {2}, 2: {3}, 3: set()}
+assert adjacencySet([(0, 1), (2, 3)]) == {0: {1}, 1: set(), 2: {3}, 3: set()}
+
+assert bfs(3, {0: {1}, 1: {2}, 2: {3}, 3: set()}) == True   
+assert bfs(4, {0: {1}, 1: {2}, 2: {3}, 3: set()}) == False
+
+assert dfs(3, {0: {1}, 1: {2}, 2: {3}, 3: set()}) == True
+assert dfs(4, {0: {1}, 1: {2}, 2: {3}, 3: set()}) == False
+
+assert topologicalSortDFS({0: {1}, 1: {2}, 2: {3}, 3: set()}) == [0, 1, 2, 3]
+
+assert topologicalSortKahn({0: {1}, 1: {2}, 2: {3}, 3: set()}) == [0, 1, 2, 3]
+
+
+# took over 40 minutes

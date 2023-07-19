@@ -1,12 +1,18 @@
 class Heap:
     def __init__(self):
+        # time - O(1
+        # space - O(1)
         self.arr = []
 
     def top(self):
+        # time - O(1)
+        # space - O(1)
         if self.arr:
             return self.arr[0]
 
     def heapify(self, index):
+        # time - O(logn)
+        # space - O(logn)
         size = len(self.arr)
         smallest = index
         left_child = 2 * index + 1
@@ -22,6 +28,8 @@ class Heap:
             self.heapify(smallest)
 
     def insert(self, x):
+        # time - O(logn)
+        # space - O(1)
         self.arr.append(x)
         index = len(self.arr) - 1
         while index > 0:
@@ -32,6 +40,8 @@ class Heap:
             index = parent
 
     def remove(self):
+        # time - O(logn)
+        # space - O(1)
         if not self.arr:
             return
         if len(self.arr) == 1:
@@ -87,3 +97,5 @@ heap.remove()
 heap.remove()
 heap.remove()
 assert heap.top() is None
+
+# took about 40 minutes

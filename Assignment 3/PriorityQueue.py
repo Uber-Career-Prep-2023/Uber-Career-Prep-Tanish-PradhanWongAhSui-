@@ -1,12 +1,18 @@
 class PriorityQueue:
     def __init__(self):
+        # time - O(1)
+        # space - O(1)
         self.arr = []
 
     def top(self) -> int:
+        # time - O(1)
+        # space - O(1)
         if self.arr:
             return self.arr[0][0]
     
     def insert(self, x: str, weight: int):
+        # time - O(logn)
+        # space - O(1)
         self.arr.append((x, weight))
         index = len(self.arr) - 1
         while index > 0:
@@ -17,6 +23,8 @@ class PriorityQueue:
             index = parent
 
     def remove(self):
+        # time - O(logn)
+        # space - O(1)
         if not self.arr:
             return
         if len(self.arr) == 1:
@@ -38,3 +46,5 @@ class PriorityQueue:
                 break
             self.arr[largest], self.arr[index] = self.arr[index], self.arr[largest]
             index = largest
+
+# took about 10 minutes
