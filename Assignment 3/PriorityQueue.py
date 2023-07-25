@@ -38,13 +38,51 @@ class PriorityQueue:
             largest = index
             left_child = 2 * index + 1
             right_child = 2 * index + 2
-            if left_child < size and self.arr[left_child] > self.arr[largest]:
+            if left_child < size and self.arr[left_child][1] > self.arr[largest][1]:  
                 largest = left_child
-            if right_child < size and self.arr[right_child] > self.arr[largest]:
+            if right_child < size and self.arr[right_child][1] > self.arr[largest][1]:  
                 largest = right_child
             if largest == index:
                 break
             self.arr[largest], self.arr[index] = self.arr[index], self.arr[largest]
             index = largest
 
-# took about 10 minutes
+# took about 18 minutes
+
+pq = PriorityQueue()
+assert pq.top() is None
+
+pq.insert("apple", 2)
+assert pq.top() == "apple"
+
+pq.insert("banana", 3)
+assert pq.top() == "banana"
+
+pq.insert("cherry", 1)
+assert pq.top() == "banana"
+
+pq.remove()
+assert pq.top() == "apple"
+
+pq.remove()
+assert pq.top() == "cherry"
+
+pq.remove()
+assert pq.top() is None
+
+pq.remove()
+assert pq.top() is None
+
+pq.insert("fruit", 5)
+pq.insert("veggie", 7)
+pq.insert("meat", 6)
+assert pq.top() == "veggie"
+
+pq.remove()
+assert pq.top() == "meat"
+
+pq.remove()
+assert pq.top() == "fruit"
+
+pq.insert("fish", 10)
+assert pq.top() == "fish"
