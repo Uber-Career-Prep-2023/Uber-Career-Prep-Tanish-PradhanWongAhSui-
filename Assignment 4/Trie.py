@@ -78,4 +78,7 @@ trie.remove('app')
 assert trie.isValidWord('apple') == False
 assert trie.isValidWord('app') == False
 
+trie = Trie()
+assert not trie.isValidWord("")
+
 # took about 35 minutes

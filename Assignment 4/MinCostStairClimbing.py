@@ -4,16 +4,21 @@
 
 def minCostStairClimbing(costs):
     n = len(costs)
-    if n == 1: return costs[0]
-    if n == 2: return min(costs)
-    
-    dp = [0] * n
-    dp[0], dp[1] = costs[0], costs[1]
-    
+    if n == 0:
+        return 0
+    if n == 1:
+        return costs[0]
+    if n == 2:
+        return min(costs)
+
+    prev1, prev2 = costs[0], costs[1]
+
     for i in range(2, n):
-        dp[i] = costs[i] + min(dp[i-1], dp[i-2])
-        
-    return min(dp[-1], dp[-2])
+        current = costs[i] + min(prev1, prev2)
+        prev1, prev2 = prev2, current
+
+    return min(prev1, prev2)
+
 
 # Test Cases
 assert minCostStairClimbing([4, 1, 6, 3, 5, 8]) == 9
@@ -26,5 +31,7 @@ assert minCostStairClimbing([10, 10, 10, 10, 10, 10, 10, 10, 10, 10]) == 50
 assert minCostStairClimbing([10, 10]) == 10
 assert minCostStairClimbing([100]) == 100
 assert minCostStairClimbing([5, 1, 1, 5]) == 2
+assert minCostStairClimbing([]) == 0
+assert minCostStairClimbing([5]) == 5
 
 # Approximate time taken: 25 minutes.

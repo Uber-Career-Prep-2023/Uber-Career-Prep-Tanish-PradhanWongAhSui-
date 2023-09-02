@@ -1,16 +1,14 @@
 import heapq
 
-# technique - maintain two heaps
-
-# time complexity - O(logn) for each addition
-# space complexity - O(n)
-
 class RunningMedian:
     def __init__(self):
         self.min_heap = []  
         self.max_heap = []  
 
     def add_number(self, num):
+        if num is None:
+            return 
+
         if not self.max_heap or num < -self.max_heap[0]:
             heapq.heappush(self.max_heap, -num)
         else:
@@ -22,6 +20,9 @@ class RunningMedian:
             heapq.heappush(self.max_heap, -heapq.heappop(self.min_heap))
 
     def get_median(self):
+        if not self.max_heap and not self.min_heap:
+            return None 
+
         if len(self.max_heap) == len(self.min_heap):
             return (-self.max_heap[0] + self.min_heap[0]) / 2
         elif len(self.max_heap) > len(self.min_heap):
@@ -29,8 +30,8 @@ class RunningMedian:
         else:
             return self.min_heap[0]
 
-
 rm = RunningMedian()
+assert rm.get_median() == None
 rm.add_number(1)
 assert rm.get_median() == 1
 
